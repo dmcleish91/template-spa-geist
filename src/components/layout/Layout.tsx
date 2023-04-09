@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Navbar>
+      <Navbar isCompact>
         <Navbar.Brand>
           <Gitlab />
           <Text b color='inherit' hideIn='xs' style={{ marginLeft: '8px' }}>
