@@ -1,4 +1,3 @@
-import { Tabs } from '@geist-ui/core';
 import { Bell } from 'react-feather';
 
 export default function InboxPopover() {

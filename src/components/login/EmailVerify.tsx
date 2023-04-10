@@ -9,26 +9,7 @@ type status = 'success' | 'error' | 'default' | 'primary' | 'secondary' | 'warni
 export const EmailVerify = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const { value, reset, bindings } = useInput('');
-
-  function validateEmail(email: string): boolean {
-    // Regular expression to match a complete email address
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-
-  const helper: { text: string; color: status } = useMemo(() => {
-    if (!value)
-      return {
-        text: '',
-        color: undefined,
-      };
-    const isValid = validateEmail(value);
-    return {
-      text: isValid ? 'Correct email' : 'Enter a valid email',
-      color: isValid ? 'success' : 'error',
-    };
-  }, [value]);
+  const { value, bindings } = useInput('');
 
   async function checkUserExists() {
     const result = await fetch('/api/auth/exists', {
@@ -43,6 +24,11 @@ export const EmailVerify = () => {
   }
 
   async function redirectToLoginPage() {
+    if (value === '' || value === undefined) {
+      return;
+    }
+
+    setIsLoading(true);
     const validEmail = await checkUserExists();
     if (validEmail) {
       if (value && value.trim() !== '') {
@@ -51,7 +37,8 @@ export const EmailVerify = () => {
         router.push('/login');
       }
     } else {
-      toast('No user found with this email address.');
+      toast.error('No user found with this email address.');
+      setIsLoading(false);
     }
   }
 
@@ -61,17 +48,7 @@ export const EmailVerify = () => {
         Log in to Continue
       </Text>
       <form className='login-form'>
-        <Input
-          {...bindings}
-          shadow={false}
-          onClearClick={reset}
-          status={helper.color}
-          color={helper.color}
-          helperColor={helper.color}
-          type='email'
-          size='lg'
-          placeholder='Enter a valid email'
-        />
+        <Input {...bindings} shadow={false} type='email' size='lg' placeholder='Enter a valid email' />
         <Spacer y={0.2} />
         <Button icon={<Mail />} size='lg' bordered color='gradient'>
           Magic Verification

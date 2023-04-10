@@ -1,4 +1,4 @@
-import { Button, Input, Select, Text } from '@geist-ui/core';
+import { Button, Input, Text } from '@nextui-org/react';
 
 export default function AddUserForm() {
   return (
@@ -7,10 +7,6 @@ export default function AddUserForm() {
         <Input>User ID</Input>
         <div>
           <Text small>Admin</Text>
-          <Select style={{ width: '201px', marginTop: '4px' }}>
-            <Select.Option value='true'>True</Select.Option>
-            <Select.Option value='false'>False</Select.Option>
-          </Select>
         </div>
 
         <Input>First Name</Input>
@@ -20,8 +16,8 @@ export default function AddUserForm() {
         <Input>Inactive</Input>
       </div>
       <div className='button-container'>
-        <Button type='secondary-light'>Cancel</Button>
-        <Button type='success-light'>Save</Button>
+        <Button auto>Cancel</Button>
+        <Button auto>Save</Button>
       </div>
     </div>
   );
