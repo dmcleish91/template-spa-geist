@@ -1,10 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Text, Input, Button, Loading, useInput, Spacer } from '@nextui-org/react';
 import { Lock, Mail } from 'react-feather';
 import { toast } from 'react-toastify';
-
-type status = 'success' | 'error' | 'default' | 'primary' | 'secondary' | 'warning' | undefined;
 
 export const EmailVerify = () => {
   const router = useRouter();

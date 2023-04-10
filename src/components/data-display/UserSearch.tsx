@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, Spinner } from '@geist-ui/core';
+import { Button, Checkbox, FormElement, Input, Spinner } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { RotateCcw, Search, UserPlus } from 'react-feather';
@@ -21,7 +21,7 @@ export default function UserSearch({
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<FormElement>) => {
     setLoading(true);
     setTimeoutId(
       setTimeout(() => {
@@ -47,7 +47,14 @@ export default function UserSearch({
   return (
     <div className='searchbar'>
       <div className='input-items'>
-        <Input ref={inputRef} icon={<Search />} name='inputValue' placeholder='Search for user...' onChange={handleInputChange} clearable />
+        <Input
+          ref={inputRef}
+          contentLeft={<Search />}
+          name='inputValue'
+          placeholder='Search for user...'
+          onChange={handleInputChange}
+          clearable
+        />
         <div className='spinner-box'>{loading && <Spinner />}</div>
         <Checkbox.Group value={checkboxValue} onChange={handleCheckboxChange}>
           <Checkbox value='Active'>Active</Checkbox>
@@ -55,8 +62,8 @@ export default function UserSearch({
         </Checkbox.Group>
       </div>
       <div className='input-menu'>
-        <Button iconRight={<RotateCcw />} auto scale={2 / 3} px={0.6} type='error' onClick={handleReset} />
-        <Button iconRight={<UserPlus />} auto scale={2 / 3} px={0.6} type='secondary' onClick={() => router.push('/manage/useredit')} />
+        <Button iconRight={<RotateCcw />} auto onClick={handleReset} />
+        <Button iconRight={<UserPlus />} auto onClick={() => router.push('/manage/useredit')} />
       </div>
     </div>
   );

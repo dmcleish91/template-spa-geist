@@ -25,7 +25,7 @@ export default function MainNavBar() {
         <Navbar.Content hideIn='xs'>
           <Navbar.Link href='/dashboard'>Dashboard</Navbar.Link>
           <Navbar.Link href='#'>Reports</Navbar.Link>
-          <Navbar.Link href='#'>Management</Navbar.Link>
+          <Navbar.Link href='/management'>Management</Navbar.Link>
           <Navbar.Link href='/settings'>Settings</Navbar.Link>
         </Navbar.Content>
       )}
