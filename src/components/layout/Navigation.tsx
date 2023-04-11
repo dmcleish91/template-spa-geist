@@ -14,7 +14,7 @@ export default function MainNavBar() {
   }
 
   return (
-    <Navbar isCompact>
+    <Navbar isCompact disableShadow>
       <Navbar.Brand>
         <Gitlab />
         <Text b color='inherit' hideIn='xs' style={{ marginLeft: '8px' }}>

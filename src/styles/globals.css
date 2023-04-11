@@ -169,6 +169,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 3rem;
+  margin-bottom: 16px;
 }
 
 .input-items {
@@ -185,24 +186,11 @@ body {
 }
 
 .spinner-box {
-  height: 20px;
-  width: 20px;
-  margin-bottom: 2px;
-}
-
-/* User Form */
-
-.user-form {
+  height: 40px;
+  width: 40px;
   display: flex;
-  flex-direction: column;
-  max-width: 220px;
-  gap: 0.75rem;
-}
-
-.button-container {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Skeleton Loading */

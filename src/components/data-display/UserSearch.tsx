@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormElement, Input, Spinner } from '@nextui-org/react';
+import { Button, Checkbox, FormElement, Input, Loading } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { RotateCcw, Search, UserPlus } from 'react-feather';
@@ -52,18 +52,20 @@ export default function UserSearch({
           contentLeft={<Search />}
           name='inputValue'
           placeholder='Search for user...'
+          animated={false}
+          shadow={false}
           onChange={handleInputChange}
-          clearable
         />
-        <div className='spinner-box'>{loading && <Spinner />}</div>
-        <Checkbox.Group value={checkboxValue} onChange={handleCheckboxChange}>
+        <div className='spinner-box'>{loading && <Loading size='sm' />}</div>
+        <Checkbox.Group value={checkboxValue} orientation='horizontal' onChange={handleCheckboxChange}>
           <Checkbox value='Active'>Active</Checkbox>
           <Checkbox value='Inactive'>Inactive</Checkbox>
         </Checkbox.Group>
       </div>
       <div className='input-menu'>
-        <Button iconRight={<RotateCcw />} auto onClick={handleReset} />
-        <Button iconRight={<UserPlus />} auto onClick={() => router.push('/manage/useredit')} />
+        <Button icon={<RotateCcw />} auto onClick={handleReset} />
+        <Button icon={<UserPlus />} auto onClick={() => router.push('/management/useredit')} />
+        {checkboxValue}
       </div>
     </div>
   );
