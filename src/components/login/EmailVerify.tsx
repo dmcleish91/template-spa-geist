@@ -3,11 +3,14 @@ import { useRouter } from 'next/router';
 import { Text, Input, Button, Loading, useInput, Spacer } from '@nextui-org/react';
 import { Lock, Mail } from 'react-feather';
 import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
 
 export const EmailVerify = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { value, bindings } = useInput('');
+
+  const { register } = useForm();
 
   async function checkUserExists() {
     const result = await fetch('/api/auth/exists', {
@@ -46,12 +49,11 @@ export const EmailVerify = () => {
         Log in to Continue
       </Text>
       <form className='login-form'>
-        <Input {...bindings} shadow={false} type='email' size='lg' placeholder='Enter a valid email' />
-        <Spacer y={0.2} />
-        <Button icon={<Mail />} size='lg' bordered color='gradient'>
+        <Input {...register('email')} id='email' shadow={false} size='lg' placeholder='Enter a valid email' />
+        <Button icon={<Mail />} size='lg' color='gradient'>
           Magic Verification
         </Button>
-        <Button icon={!isLoading && <Lock />} size='lg' disabled={isLoading} onClick={redirectToLoginPage}>
+        <Button icon={!isLoading && <Lock />} size='lg' disabled={isLoading} flat>
           {isLoading && <Loading color='currentColor' size='sm' type='points' />}
           {!isLoading && 'Password Verification'}
         </Button>
