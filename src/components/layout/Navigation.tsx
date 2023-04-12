@@ -8,6 +8,8 @@ export default function MainNavBar() {
   const [logAction, setLogAction] = useState('Log Out');
   const { data: session, status } = useSession();
 
+  console.log('I have rendered the navbar!');
+
   function onSignOut() {
     setLogAction('Logging Out...');
     signOut();
@@ -24,7 +26,7 @@ export default function MainNavBar() {
       {session && (
         <Navbar.Content hideIn='xs'>
           <Navbar.Link href='/dashboard'>Dashboard</Navbar.Link>
-          <Navbar.Link href='#'>Reports</Navbar.Link>
+          <Navbar.Link href='/reports'>Reports</Navbar.Link>
           <Navbar.Link href='/management'>Management</Navbar.Link>
           <Navbar.Link href='/settings'>Settings</Navbar.Link>
         </Navbar.Content>

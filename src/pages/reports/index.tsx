@@ -5,7 +5,7 @@ import { getSession } from 'next-auth/react';
 export default function dashboard() {
   return (
     <div style={{ padding: '24px' }}>
-      <div style={{ padding: '12px', display: 'flex', justifyContent: 'center', gap: '16px' }}>
+      <div style={{ padding: '12px', display: 'flex', justifyContent: 'center', gap: '16px', height: '800px' }}>
         <Card css={{ mw: '400px' }} variant='bordered'>
           <Card.Body>
             <Text>A basic card</Text>
@@ -17,30 +17,6 @@ export default function dashboard() {
           </Card.Body>
         </Card>
         <Card css={{ mw: '400px' }} variant='bordered'>
-          <Card.Body>
-            <Text>A basic card</Text>
-          </Card.Body>
-        </Card>
-      </div>
-      <div style={{ padding: '12px', display: 'flex', justifyContent: 'center', gap: '16px' }}>
-        <Card css={{ mw: '400px' }} variant='bordered'>
-          <Card.Body>
-            <Text>A basic card</Text>
-          </Card.Body>
-        </Card>
-        <Card css={{ mw: '400px' }} variant='bordered'>
-          <Card.Body>
-            <Text>A basic card</Text>
-          </Card.Body>
-        </Card>
-        <Card css={{ mw: '400px' }} variant='bordered'>
-          <Card.Body>
-            <Text>A basic card</Text>
-          </Card.Body>
-        </Card>
-      </div>
-      <div style={{ padding: '12px', display: 'flex', justifyContent: 'center', gap: '16px' }}>
-        <Card css={{ mw: '1228px' }} variant='bordered'>
           <Card.Body>
             <Text>A basic card</Text>
           </Card.Body>
