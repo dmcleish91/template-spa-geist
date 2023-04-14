@@ -3,12 +3,14 @@ import { Gitlab } from 'react-feather';
 import { GeistLink } from '../ui/GeistLink';
 import { signOut, useSession } from 'next-auth/react';
 import { Button, Text, Navbar, Popover, User } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
 export default function MainNavBar() {
+  const router = useRouter();
   const [logAction, setLogAction] = useState('Log Out');
   const { data: session, status } = useSession();
 
-  console.log('I have rendered the navbar!');
+  console.log('session', session);
 
   function onSignOut() {
     setLogAction('Logging Out...');
@@ -25,10 +27,10 @@ export default function MainNavBar() {
       </Navbar.Brand>
       {session && (
         <Navbar.Content hideIn='xs'>
-          <Navbar.Link href='/dashboard'>Dashboard</Navbar.Link>
-          <Navbar.Link href='/reports'>Reports</Navbar.Link>
-          <Navbar.Link href='/management'>Management</Navbar.Link>
-          <Navbar.Link href='/settings'>Settings</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('/dashboard')}>Dashboard</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('/reports')}>Reports</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('/management')}>Management</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('/settings')}>Settings</Navbar.Link>
         </Navbar.Content>
       )}
       <Navbar.Content>
