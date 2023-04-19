@@ -55,7 +55,7 @@ export default function FilteredUserTable({
     .filter((user: { id: string }) => user.id.toLowerCase().includes(inputValue.toLowerCase()));
 
   return (
-    <Table bordered selectionMode='single' shadow={false} aria-label='Example table with dynamic content'>
+    <Table bordered compact selectionMode='single' shadow={false} aria-label='Table of users'>
       <Table.Header columns={columns}>{(column) => <Table.Column key={column.key}>{column.label}</Table.Column>}</Table.Header>
       <Table.Body items={filteredData}>
         {(filteredData) => (

@@ -1,7 +1,7 @@
 import { Button, Checkbox, FormElement, Input, Loading } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
-import { RotateCcw, Search, UserPlus } from 'react-feather';
+import { CheckCircle, RotateCcw, Search, UserPlus } from 'react-feather';
 
 export default function UserSearch({
   setInputValue,
@@ -50,14 +50,14 @@ export default function UserSearch({
         <Input
           ref={inputRef}
           contentLeft={<Search />}
+          contentRight={loading ? <Loading type='spinner' size='sm' /> : <CheckCircle />}
           name='inputValue'
           placeholder='Search for user...'
           animated={false}
           shadow={false}
           onChange={handleInputChange}
         />
-        <div className='spinner-box'>{loading && <Loading size='sm' />}</div>
-        <Checkbox.Group value={checkboxValue} orientation='horizontal' onChange={handleCheckboxChange}>
+        <Checkbox.Group value={checkboxValue} orientation='horizontal' size='sm' onChange={handleCheckboxChange}>
           <Checkbox value='Active'>Active</Checkbox>
           <Checkbox value='Inactive'>Inactive</Checkbox>
         </Checkbox.Group>

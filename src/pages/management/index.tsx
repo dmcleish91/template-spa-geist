@@ -44,8 +44,6 @@ export default function Management() {
         inactive: user.inactive ? 'Inactive' : 'Active',
       };
     });
-
-    console.log(mappedData);
   }
 
   return (

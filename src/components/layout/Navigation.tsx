@@ -10,8 +10,6 @@ export default function MainNavBar() {
   const [logAction, setLogAction] = useState('Log Out');
   const { data: session, status } = useSession();
 
-  console.log('session', session);
-
   function onSignOut() {
     setLogAction('Logging Out...');
     signOut();
@@ -27,10 +25,10 @@ export default function MainNavBar() {
       </Navbar.Brand>
       {session && (
         <Navbar.Content hideIn='xs'>
-          <Navbar.Link onClick={() => router.push('/dashboard')}>Dashboard</Navbar.Link>
-          <Navbar.Link onClick={() => router.push('/reports')}>Reports</Navbar.Link>
-          <Navbar.Link onClick={() => router.push('/management')}>Management</Navbar.Link>
-          <Navbar.Link onClick={() => router.push('/settings')}>Settings</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('dashboard')}>Dashboard</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('reports')}>Reports</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('management')}>Management</Navbar.Link>
+          <Navbar.Link onClick={() => router.push('settings')}>Settings</Navbar.Link>
         </Navbar.Content>
       )}
       <Navbar.Content>

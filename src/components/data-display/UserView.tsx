@@ -10,7 +10,6 @@ export default function UserView({ userData }: { userData: any | undefined }) {
   const [inputValue, setInputValue] = useState('');
   const [checkboxValue, setCheckboxValue] = useState<string[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>();
-  const [isActive, setIsActive] = useState<string[]>([]);
   const [data, setData] = useState<any[] | undefined>(userData);
 
   useEffect(() => {

@@ -36,7 +36,7 @@ const authOptions: NextAuthOptions = {
         }
 
         prisma.$disconnect();
-        return { id: 'crypto.randomUUID()', email: email, name: user.first, title: user.title };
+        return { id: user.id.toString(), email: email, data: user };
       },
     }),
   ],
