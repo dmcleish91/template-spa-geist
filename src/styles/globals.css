@@ -50,9 +50,9 @@ body {
   all: unset;
 }
 
-.geist-link:hover {
+/* .geist-link:hover {
   background-color: #eaeaea;
-}
+} */
 
 .tabs > .content {
   display: none;

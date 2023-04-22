@@ -27,6 +27,18 @@ export const PasswordVerify = () => {
     setIsLoading(true);
     const result = await signIn('credentials', { redirect: false, email: formData.email, password: formData.password });
     if (!result?.error) {
+      const userData = await fetch('/api/data/getuserdata', {
+        method: 'POST',
+        body: JSON.stringify({ email: formData.email }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => res.json());
+
+      console.log(userData);
+
+      localStorage.setItem('userData', JSON.stringify(userData.user));
+
       router.replace('/dashboard');
     }
     setIsLoading(false);

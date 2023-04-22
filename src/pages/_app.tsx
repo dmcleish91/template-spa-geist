@@ -10,7 +10,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
 
 const theme = createTheme({
-  type: 'dark', // it could be "light" or "dark"
+  type: 'dark',
   theme: {
     colors: {
       primary: '#4ADE7B',
@@ -22,12 +22,12 @@ const theme = createTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider theme={undefined}>
+    <NextUIProvider theme={theme}>
       <SessionProvider session={pageProps.session}>
         <Layout>
           <ToastContainer position='bottom-right' />
           <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </QueryClientProvider>
         </Layout>
       </SessionProvider>
