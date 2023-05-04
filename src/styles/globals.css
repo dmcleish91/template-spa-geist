@@ -193,6 +193,31 @@ body {
   align-items: center;
 }
 
+/* Add User Form */
+
+.user-form-container {
+  width: 1170px;
+  padding: 12px;
+}
+
+.user-form-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.user-form {
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
+}
+
+.additional-info {
+  width: 450px;
+  display: flex;
+  align-items: flex-end;
+}
+
 /* Skeleton Loading */
 
 .skeleton {

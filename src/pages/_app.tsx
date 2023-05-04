@@ -22,7 +22,7 @@ const theme = createTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider theme={theme}>
+    <NextUIProvider>
       <SessionProvider session={pageProps.session}>
         <Layout>
           <ToastContainer position='bottom-right' />

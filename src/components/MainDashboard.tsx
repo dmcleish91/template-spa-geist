@@ -1,6 +1,3 @@
-import { GeneralSettings } from '@/components/GeneralSettings';
-import { Title } from '@/components/layout/Title';
-import { GeistLink } from '@/components/ui/GeistLink';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { db } from '@/lib/db';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<{ status: string; userExists: boolean }>) {
@@ -7,18 +7,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   const { email } = req.body;
-  const prisma = new PrismaClient();
-  const user = await prisma.users.findUnique({
+  const user = await db.users.findUnique({
     where: {
       email: email,
     },
   });
 
   if (!user) {
-    prisma.$disconnect();
     res.status(200).json({ status: 'error', userExists: false });
   } else {
-    prisma.$disconnect();
     res.status(200).json({ status: 'success', userExists: true });
   }
 }

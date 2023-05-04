@@ -1,4 +1,6 @@
 import { Button, Card, Checkbox, Input, Spacer, Text } from '@nextui-org/react';
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -9,7 +11,6 @@ type FormValues = {
   lastName: string;
   title: string;
   phoneNumber: string;
-  password: string;
   agreedToTerms: boolean;
   inactive: boolean;
   forcePasswordChange: boolean;
@@ -17,18 +18,38 @@ type FormValues = {
 
 export default function AddUserForm() {
   const router = useRouter();
+  const { id } = router.query;
   const { register, handleSubmit, control } = useForm<FormValues>({
-    defaultValues: {
-      userId: '',
-      isSiteAdmin: false,
-      firstName: '',
-      lastName: '',
-      title: '',
-      phoneNumber: '',
-      password: '',
-      agreedToTerms: false,
-      inactive: false,
-      forcePasswordChange: false,
+    defaultValues: async () => {
+      if (!id) {
+        return {
+          userId: '',
+          isSiteAdmin: false,
+          firstName: '',
+          lastName: '',
+          title: '',
+          phoneNumber: '',
+          agreedToTerms: false,
+          inactive: '',
+          forcePasswordChange: false,
+        };
+      }
+
+      const response = await fetch('http://localhost:3000/api/users/dwight@spectrumware.net');
+      const data = await response.json();
+      console.log(data);
+
+      return {
+        userId: data.user.email,
+        isSiteAdmin: data.user.admin,
+        firstName: data.user.first,
+        lastName: data.user.last,
+        title: data.user.title,
+        phoneNumber: data.user.phone,
+        agreedToTerms: false,
+        inactive: data.user.inactive,
+        forcePasswordChange: false,
+      };
     },
   });
 
@@ -37,27 +58,21 @@ export default function AddUserForm() {
   };
 
   return (
-    <div style={{ width: '1170px', padding: '24px' }}>
+    <div className='user-form-container'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
-          <Button flat auto>
-            Add
-          </Button>
-          <Button flat auto>
-            Edit
-          </Button>
-          <Button flat auto type='submit'>
+        <div className='user-form-buttons-container'>
+          <Button auto>Add</Button>
+          <Button auto>Edit</Button>
+          <Button auto type='submit'>
             Save
           </Button>
-          <Button flat auto>
-            Cancel
-          </Button>
-          <Button flat auto onPress={() => router.back()}>
+          <Button auto>Cancel</Button>
+          <Button auto onPress={() => router.back()}>
             Return
           </Button>
         </div>
         <Spacer y={0.5} />
-        <div style={{ display: 'flex', gap: '24px', justifyContent: 'space-around' }}>
+        <div className='user-form'>
           <div>
             <Input label='User ID' id='userId' bordered animated={false} {...register('userId')} />
             <Spacer y={0.5} />
@@ -65,7 +80,7 @@ export default function AddUserForm() {
               control={control}
               name='isSiteAdmin'
               render={({ field: { onChange, onBlur, value, name, ref } }) => (
-                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} name={name} defaultSelected={value} ref={ref}>
+                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} name={name} isSelected={value} ref={ref}>
                   Is Site Admin
                 </Checkbox>
               )}
@@ -79,13 +94,11 @@ export default function AddUserForm() {
             <Spacer y={0.5} />
             <Input label='Phone Number' bordered animated={false} {...register('phoneNumber')} />
             <Spacer y={0.5} />
-            <Input label='Password' bordered animated={false} {...register('password')} />
-            <Spacer y={0.5} />
             <Controller
               control={control}
               name='forcePasswordChange'
               render={({ field: { onChange, onBlur, value, name, ref } }) => (
-                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} defaultSelected={value} name={name} ref={ref}>
+                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} name={name} isSelected={value} ref={ref}>
                   Force Password Change
                 </Checkbox>
               )}
@@ -93,19 +106,27 @@ export default function AddUserForm() {
             <Spacer y={0.5} />
             <Input label='Last Password Change' bordered animated={false} readOnly value='02/09/2023' />
             <Spacer y={0.5} />
-            <Input label='Agreed to Terms' id='agreedToTerms' bordered animated={false} {...register('agreedToTerms')} />
+            <Controller
+              control={control}
+              name='agreedToTerms'
+              render={({ field: { onChange, onBlur, value, name, ref } }) => (
+                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} name={name} isSelected={value} ref={ref}>
+                  Agreed to Terms
+                </Checkbox>
+              )}
+            />
             <Spacer y={0.5} />
             <Controller
               control={control}
               name='inactive'
               render={({ field: { onChange, onBlur, value, name, ref } }) => (
-                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} defaultSelected={value} name={name} ref={ref}>
+                <Checkbox size='sm' onBlur={onBlur} onChange={onChange} name={name} isSelected={value} ref={ref}>
                   Inactive
                 </Checkbox>
               )}
             />
           </div>
-          <div style={{ width: '450px', display: 'flex', alignItems: 'flex-end' }}>
+          <div className='additional-info'>
             <Card variant='bordered'>
               <Card.Header>
                 <Text b>Additional Information</Text>
@@ -124,3 +145,22 @@ export default function AddUserForm() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession({ req: context.req });
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+};
