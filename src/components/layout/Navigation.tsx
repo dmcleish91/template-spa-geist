@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Gitlab } from 'react-feather';
-import { GeistLink } from '../ui/GeistLink';
 import { signOut, useSession } from 'next-auth/react';
 import { Button, Text, Navbar, Popover, User } from '@nextui-org/react';
 import { useRouter } from 'next/router';
+import { GeistLink } from '../ui/geistlink';
 
 export default function MainNavBar() {
   const router = useRouter();

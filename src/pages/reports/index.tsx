@@ -1,5 +1,5 @@
-import CardLink from '@/components/ui/CardLink';
-import { Card, Text } from '@nextui-org/react';
+import ButtonCard from '@/components/ui/buttoncard';
+import { Card } from '@nextui-org/react';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 
@@ -9,32 +9,32 @@ export default function reports() {
       <div style={{ padding: '12px', display: 'flex', justifyContent: 'center', gap: '16px' }}>
         <Card css={{ mw: '400px' }} variant='bordered'>
           <Card.Body style={{ display: 'flex', gap: '12px' }}>
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
           </Card.Body>
         </Card>
         <Card css={{ mw: '400px' }} variant='bordered'>
           <Card.Body style={{ display: 'flex', gap: '12px' }}>
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
           </Card.Body>
         </Card>
         <Card css={{ mw: '400px' }} variant='bordered'>
           <Card.Body style={{ display: 'flex', gap: '12px' }}>
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
-            <CardLink />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
+            <ButtonCard />
           </Card.Body>
         </Card>
       </div>

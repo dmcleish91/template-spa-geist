@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { useQuery } from 'react-query';
 import { getSession } from 'next-auth/react';
 import { GetServerSideProps } from 'next/types';
-import { Title } from '@/components/layout/Title';
-import UserView from '@/components/data-display/UserView';
+import UserView from '@/components/data-display/userview';
+import { Title } from '@/components/layout/title';
 
 export type UserData = {
   id: string;

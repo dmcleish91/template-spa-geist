@@ -1,6 +1,6 @@
 import { Card, Text } from '@nextui-org/react';
 
-export default function CardLink() {
+export default function ButtonCard() {
   return (
     <Card isPressable isHoverable css={{ mw: '375px' }} variant='bordered'>
       <Card.Body>

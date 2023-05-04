@@ -1,7 +1,7 @@
+import { GeneralSettings } from '@/components/generalsettings';
+import { Title } from '@/components/layout/title';
+import { GeistLink } from '@/components/ui/geistlink';
 import Head from 'next/head';
-import { Title } from '@/components/layout/Title';
-import { GeistLink } from '@/components/ui/GeistLink';
-import { GeneralSettings } from '@/components/GeneralSettings';
 
 export default function Settings() {
   return (

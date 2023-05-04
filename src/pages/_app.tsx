@@ -2,10 +2,10 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Layout from '@/components/layout/Layout';
 import { SessionProvider } from 'next-auth/react';
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Layout from '@/components/layout/layout';
 
 const queryClient = new QueryClient();
 

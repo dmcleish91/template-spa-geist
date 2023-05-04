@@ -1,4 +1,4 @@
-import { EmailVerify } from '@/components/login/EmailVerify';
+import { EmailVerify } from '@/components/login/emailverify';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';

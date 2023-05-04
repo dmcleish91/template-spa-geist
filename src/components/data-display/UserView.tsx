@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import FilteredUserTable from './FilteredUserTable';
-import UserSearch from './UserSearch';
+import FilteredUserTable from './filteredusertable';
+import UserSearch from './usersearch';
 import { Card } from '@nextui-org/react';
 
 export type Params = { inputValue: string; checkbox: string[] };
@@ -10,7 +10,6 @@ export default function UserView({ userData }: { userData: any | undefined }) {
   const [inputValue, setInputValue] = useState('');
   const [checkboxValue, setCheckboxValue] = useState<string[]>([]);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>();
-  const [data, setData] = useState<any[] | undefined>(userData);
 
   useEffect(() => {
     return () => clearTimeout(timeoutId);
@@ -28,7 +27,7 @@ export default function UserView({ userData }: { userData: any | undefined }) {
       />
       {!loading && (
         <Card>
-          <FilteredUserTable data={data} inputValue={inputValue} checkboxValue={checkboxValue} />
+          <FilteredUserTable data={userData} inputValue={inputValue} checkboxValue={checkboxValue} />
         </Card>
       )}
     </div>

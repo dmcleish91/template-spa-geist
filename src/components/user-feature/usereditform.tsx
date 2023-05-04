@@ -16,7 +16,7 @@ type FormValues = {
   forcePasswordChange: boolean;
 };
 
-export default function AddUserForm() {
+export default function EditUserForm() {
   const router = useRouter();
   const { id } = router.query;
   const { register, handleSubmit, control } = useForm<FormValues>({

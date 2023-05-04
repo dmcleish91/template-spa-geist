@@ -1,4 +1,4 @@
-import { PasswordVerify } from '@/components/login/PasswordVerify';
+import { PasswordVerify } from '@/components/login/passwordverify';
 import Head from 'next/head';
 
 export default function PasswordLogin() {

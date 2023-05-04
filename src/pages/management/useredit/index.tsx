@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { getSession } from 'next-auth/react';
 import { GetServerSideProps } from 'next/types';
-import { Title } from '@/components/layout/Title';
-import AddUserForm from '@/components/user-feature/AddUserForm';
+import EditUserForm from '@/components/user-feature/usereditform';
+import { Title } from '@/components/layout/title';
 
 export default function EditUserPage() {
   return (
@@ -16,7 +16,7 @@ export default function EditUserPage() {
 
       <Title>Edit User</Title>
       <div className='dashboard-container'>
-        <AddUserForm />
+        <EditUserForm />
       </div>
     </>
   );
