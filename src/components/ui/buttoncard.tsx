@@ -1,10 +1,10 @@
-import { Card, Text } from '@nextui-org/react';
+import { Card, Text } from "@nextui-org/react";
 
-export default function ButtonCard() {
+export default function ButtonCard({ text }: { text?: React.ReactNode }) {
   return (
-    <Card isPressable isHoverable css={{ mw: '375px' }} variant='bordered'>
+    <Card isPressable isHoverable css={{ mw: "375px" }} variant='bordered'>
       <Card.Body>
-        <Text>A basic card</Text>
+        <Text>{text || "A basic card"}</Text>
       </Card.Body>
     </Card>
   );
