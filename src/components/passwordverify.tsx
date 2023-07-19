@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
 import { Button, FormElement, Input, Loading, Text } from '@nextui-org/react';
 
-export const PasswordVerify = () => {
+export default function PasswordVerify() {
   const router = useRouter();
   const { username } = router.query;
 
@@ -25,23 +25,13 @@ export const PasswordVerify = () => {
 
   async function login() {
     setIsLoading(true);
+
     const result = await signIn('credentials', { redirect: false, email: formData.email, password: formData.password });
-    if (!result?.error) {
-      const userData = await fetch('/api/data/getuserdata', {
-        method: 'POST',
-        body: JSON.stringify({ email: formData.email }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((res) => res.json());
 
-      console.log(userData);
-
-      localStorage.setItem('userData', JSON.stringify(userData.user));
-
-      router.replace('/dashboard');
-    }
     setIsLoading(false);
+    if (!result?.error) {
+      router.push('/reports');
+    }
   }
 
   return (
@@ -60,11 +50,11 @@ export const PasswordVerify = () => {
           onChange={changeHandler}
           ref={passwordRef}
         />
-        <Button icon={!isLoading && <Lock />} onClick={login} size='lg' disabled={isLoading}>
+        <Button icon={!isLoading && <Lock />} onClick={login} size='lg' disabled={isLoading} type='button'>
           {isLoading && <Loading color='currentColor' size='sm' />}
           {!isLoading && 'Password Verification'}
         </Button>
       </form>
     </div>
   );
-};
+}

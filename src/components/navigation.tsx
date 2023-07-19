@@ -3,7 +3,7 @@ import { Gitlab } from 'react-feather';
 import { signOut, useSession } from 'next-auth/react';
 import { Button, Text, Navbar, Popover, User } from '@nextui-org/react';
 import { useRouter } from 'next/router';
-import { GeistLink } from '../ui/geistlink';
+import { GeistLink } from './ui/geistlink';
 
 export default function MainNavBar() {
   const router = useRouter();
@@ -32,14 +32,14 @@ export default function MainNavBar() {
         </Navbar.Content>
       )}
       <Navbar.Content>
-        {!session && status !== 'loading' && (
+        {!session && (
           <Navbar.Item>
             <Button auto flat href='#'>
               Log in
             </Button>
           </Navbar.Item>
         )}
-        {session && (
+        {status === 'authenticated' && (
           <Navbar.Item>
             <Popover>
               <Popover.Trigger>

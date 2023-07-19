@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { getSession } from 'next-auth/react';
 import { GetServerSideProps } from 'next/types';
-import EditUserForm from '@/components/user-feature/usereditform';
-import { Title } from '@/components/layout/title';
+import EditUserForm from '@/components/usereditform';
+import { Title } from '@/components/title';
 
 export default function EditUserPage() {
   return (

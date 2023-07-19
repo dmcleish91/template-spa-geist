@@ -20,7 +20,7 @@ model users {
   title    String  @db.VarChar(255)
   phone    String  @db.VarChar(20)
   inactive Boolean
-  password String  @db.VarChar(50)
+  password String  @db.VarChar(255)
 }
 
 model tblUsers {

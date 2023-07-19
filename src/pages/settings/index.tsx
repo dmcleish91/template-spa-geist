@@ -1,5 +1,5 @@
 import { GeneralSettings } from '@/components/generalsettings';
-import { Title } from '@/components/layout/title';
+import { Title } from '@/components/title';
 import { GeistLink } from '@/components/ui/geistlink';
 import Head from 'next/head';
 

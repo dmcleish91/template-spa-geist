@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { SessionProvider } from 'next-auth/react';
 import { NextUIProvider, createTheme } from '@nextui-org/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Layout from '@/components/layout/layout';
+import Layout from '@/components/layout';
 
 const queryClient = new QueryClient();
 
